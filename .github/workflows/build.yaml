@@ -1,12 +1,14 @@
 name: build-on-pr
 
 on:
-  pull_request:
+  # pull_request:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      - master
+    # branches:
+    #   - main
+    #   - master
+    tags:
+      - '*'
 
 permissions:
   contents: write
