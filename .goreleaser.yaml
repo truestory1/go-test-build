@@ -11,8 +11,13 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
-      - windows
-      - darwin
+      # - windows
+      # - darwin
+    goarch:
+      - amd64
+      # - 386
+      # - arm
+      # - arm64
 
 archives:
   - format: tar.gz
@@ -35,3 +40,6 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
+
+snapshot:
+  name_template: "{{ .Tag }}-test"
