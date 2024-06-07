@@ -1,11 +1,11 @@
-name: buildx-on-pr
+name: build-on-pr
 
 on:
   pull_request:
   workflow_dispatch:
 
-env:
-  PLATFORMS: linux/amd64 #,linux/arm64
+permissions:
+  contents: write
 
 jobs:
   buildx-on-pr:
@@ -13,8 +13,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        with:
+          fetch-depth: 0
 
       - name: Set up GO
         uses: actions/setup-go@v5
         with:
           go-version: '1.22.2'
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
