@@ -10,10 +10,17 @@ before:
 builds:
   - env:
       - CGO_ENABLED=0
-    goos:
-      - linux
-      - windows
-      - darwin
+    goarch:
+      - amd64
+      - arm64
+    goarm:
+      - "7"
+    goamd64:
+      - v1
+    targets:
+      - linux_arm64
+      - windows_arm64
+      - darwin_arm64
 
 archives:
   - format: tar.gz
