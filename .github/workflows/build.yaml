@@ -1,7 +1,7 @@
 name: build-on-pr
 
 on:
-  # pull_request:
+  pull_request:
   workflow_dispatch:
   push:
     branches:
@@ -45,7 +45,13 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          args: release --clean
+          args: release --clean --snapshot
           version: latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshot
+          path: dist/*
