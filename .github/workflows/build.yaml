@@ -3,12 +3,6 @@ name: build-on-pr
 on:
   pull_request:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
-    tags:
-      - '*'
 
 permissions:
   contents: write
@@ -22,19 +16,6 @@ jobs:
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
         with:
           fetch-depth: 0
-
-      # - name: Bump version and push tag
-      #   id: tag_version
-      #   uses: mathieudutour/github-tag-action@v6.2
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Create a GitHub release
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     tag: ${{ steps.tag_version.outputs.new_tag }}
-      #     name: Release ${{ steps.tag_version.outputs.new_tag }}
-      #     body: ${{ steps.tag_version.outputs.changelog }}
 
       - name: Set up GO
         uses: actions/setup-go@v5
