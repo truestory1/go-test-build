@@ -2,10 +2,6 @@ name: release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
     tags:
       - '*'
 
@@ -32,12 +28,6 @@ jobs:
         with:
           distribution: goreleaser
           args: release --clean
-          # version: latest
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Upload build artifacts
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: snapshot
-      #     path: dist/*
