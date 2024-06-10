@@ -18,8 +18,8 @@ builds:
     goamd64:
       - v1
     targets:
-      - linux_arm64
-      - windows_arm64
+      - linux_amd64
+      - windows_amd64
       - darwin_arm64
 
 archives:
