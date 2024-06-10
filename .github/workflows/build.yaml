@@ -4,9 +4,9 @@ on:
   # pull_request:
   workflow_dispatch:
   push:
-    # branches:
-    #   - main
-    #   - master
+    branches:
+      - main
+      - master
     tags:
       - '*'
 
@@ -46,5 +46,6 @@ jobs:
         with:
           distribution: goreleaser
           args: release --clean
+          version: latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
